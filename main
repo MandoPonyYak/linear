@@ -1,0 +1,28 @@
+import sympy as sp
+
+def solve_linear_equation(equation):
+    x = sp.symbols('x')
+    solution = sp.solve(equation, x)
+    return solution
+
+def main():
+    print("Linear Equation Solver")
+    print("Enter a linear equation in the form 'ax + b = 0'")
+
+    equation_str = input("Equation: ")
+
+    try:
+        equation = sp.sympify(equation_str)
+        solution = solve_linear_equation(equation)
+
+        if solution:
+            print("Solution:")
+            for sol in solution:
+                print("x =", sol)
+        else:
+            print("No solution found.")
+    except sp.SympifyError:
+        print("Invalid equation. Please enter a valid linear equation.")
+
+if __name__ == "__main__":
+    main()
